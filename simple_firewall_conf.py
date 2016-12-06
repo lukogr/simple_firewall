@@ -1,10 +1,9 @@
 topology_conf = {
-    '''
-    hex_OpenFlow_switch_DPID:
-    {
-        "dst_subnet": out_port       
-    }
-    '''
+    
+    #hex_OpenFlow_switch_DPID:
+    #{
+    #    "dst_subnet": out_port       
+    #}
     
     # NoviSwitch
     0x000000223d5a0019:
