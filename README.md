@@ -2,7 +2,7 @@
 simple_firewall in a network application dedicated for the SDN-enabled OpenFlow-based infrastructure. It runs with [Ryu] (https://osrg.github.io/ryu/) OpenFlow controller.
 
 simple_firewall application allows to set security rules to ICMP, UDP and TCP network traffic and monitor unwanted flows.
-It is based on rest_firewall Ryu example application, but it implements also forwarding engine to forward IP packets based on static routing table. Moreover it learns MAC adresses on ports to avoid ARP flooding each time.
+It is based on the rest_firewall Ryu example application, but it implements also the forwarding engine to forward IP packets based on static routing table. Moreover it learns MAC adresses on ports to avoid ARP flooding each time.
 
 ## Before begin ##
 * Install prerequisites: 
