@@ -16,7 +16,7 @@
 # -------------------------------------------------------------------
 # based on simple_switch and rest_firewall
 # author: lukaszog@man.poznan.pl
-# PSNC, 11.2016
+# PSNC, 12.2016
 
 # This is simple firewall network application 
 # working in SDN-enabled OpenFlow-based infrastructure
