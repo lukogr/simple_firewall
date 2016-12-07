@@ -28,7 +28,7 @@ Edit simple_firewall_conf and change topology_conf.
             "dst_subnet/mask": out_port       
     }
 
-Example of topology_conf:
+Example topology_conf:
 
     topology_conf = {
 
@@ -46,10 +46,11 @@ Example of topology_conf:
 
     }
 
-   
 ## Apply firewall rules ##
 
-### Option 1 - use REST API defined in rest_firewall app
+### Option 1 - use REST API 
+simple_firewall exposes API (defined also in rest_firewall app) through http://{service_IP_address}:8080
+
     # =============================
     #          REST API
     # =============================
