@@ -1,8 +1,8 @@
 # simple_firewall
-simple_firewall in a network application dedicated for the SDN-enabled OpenFlow-based infrastructure. It runs with Ryu OpenFlow controller.
+simple_firewall in a network application dedicated for the SDN-enabled OpenFlow-based infrastructure. It runs with [Ryu] (https://osrg.github.io/ryu/) OpenFlow controller.
 
-simple_firewall application allow to set security rules to ICMP, UDP and TCP network traffic and monitor unwanted traffic.
-It is based on rest_firewall Ryu example application, but implements also forwarding engine to forward IP packets based on static routing table. Moreover it learns MAC adresses on ports to avoid ARP flooding each time.
+simple_firewall application allows to set security rules to ICMP, UDP and TCP network traffic and monitor unwanted flows.
+It is based on rest_firewall Ryu example application, but it implements also forwarding engine to forward IP packets based on static routing table. Moreover it learns MAC adresses on ports to avoid ARP flooding each time.
 
 ## Before begin ##
 * Install prerequisites: 
@@ -12,7 +12,7 @@ It is based on rest_firewall Ryu example application, but implements also forwar
   - python-paramiko
   - git
 
-* Install Ryu OpenFlow controller. Yyu may follow the instructions from the [tutorial] (https://github.com/osrg/ryu/wiki/OpenFlow_Tutorial).
+* Install Ryu OpenFlow controller. Yoy may follow the instructions from the [tutorial] (https://github.com/osrg/ryu/wiki/OpenFlow_Tutorial).
 
 ## How to run ##
     ~/ryu/ryu/app$ git clone https://github.com/lukogr/simple_firewall
@@ -27,6 +27,25 @@ Edit simple_firewall_conf and change topology_conf.
         {
             "dst_subnet/mask": out_port       
     }
+
+Example of topology_conf:
+
+    topology_conf = {
+
+        0x000000223d5a0019:
+        {
+            "192.168.0.1/24": 8,
+            "192.168.20.2/24": 6
+        },    
+
+        0x5e3e486e730002fe:
+        {
+            "192.168.0.1/24": 45,
+            "192.168.20.2/24": 46
+        },
+
+    }
+
    
 ## Apply firewall rules ##
 
@@ -131,9 +150,9 @@ Edit simple_firewall_conf and change topology_conf.
     #--------------------------------------------------------------------
 
 ### Option 2 - define rules in configuration file ###
-All rules set in the simple_firewall_conf.py file are automaticaly applied by the application just after OpenFlow switch connect to the controller.
+All rules set in the simple_firewall_conf.py file are automaticaly applied by the simple_firewall application just after OpenFlow switch connects to the controller.
 
-Default configuration (to change) allow bidirectional ICMP traffic (ping) between 192.168.0.0 and 192.168.20.0 subnets:
+Example configuration (to change) allow bidirectional ICMP traffic (ping) between 192.168.0.0 and 192.168.20.0 subnets:
 
     firewall_rules = [
         {
@@ -151,9 +170,6 @@ Default configuration (to change) allow bidirectional ICMP traffic (ping) betwee
             "actions":"ALLOW"
         },    
     ]
-
-
    
 ## Notes ##
 Tested with OpenFlow 1.3 / Ryu 4.8 and Python 2.7
-
