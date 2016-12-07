@@ -173,4 +173,4 @@ Example configuration (to change) allow bidirectional ICMP traffic (ping) betwee
     ]
    
 ## Notes ##
-Tested with OpenFlow 1.3 / Ryu 4.8 and Python 2.7
+Tested with OpenFlow 1.3 [Pica8-3822 and NoviFlow-2128 switches] / Ryu 4.8 and Python 2.7
