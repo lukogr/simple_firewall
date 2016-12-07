@@ -20,4 +20,23 @@ topology_conf = {
     },
  
 }
+firewall_rules = [
+    {
+        "priority":"100",
+        "nw_src":"192.168.20.2/24",
+        "nw_dst":"192.168.0.1/24",
+        "nw_proto":"ICMP",
+        "actions":"ALLOW"
+    },
+    {
+        "priority":"100",
+        "nw_src":"192.168.0.1/24",
+        "nw_dst":"192.168.20.2/24",
+        "nw_proto":"ICMP",
+        "actions":"ALLOW"
+    },    
+]
+    
+
+ 
 

@@ -26,6 +26,7 @@
 
 import logging
 import json
+import requests
 from webob import Response
 from ryu.app.wsgi import ControllerBase
 from ryu.app.wsgi import WSGIApplication
@@ -52,7 +53,7 @@ from ryu.lib.packet import packet
 from ryu.lib.packet import ethernet
 from ryu.lib.packet import ether_types
 
-from simple_firewall_conf import topology_conf
+from simple_firewall_conf import topology_conf, firewall_rules
 
 # =============================
 #          REST API
@@ -416,9 +417,21 @@ class FirewallController(ControllerBase):
         FirewallController._OFS_LIST.setdefault(dp.id, f_ofs)
 
         #f_ofs.set_disable_flow()
-        f_ofs.set_log_enable()
+        f_ofs.set_log_enable()       
         FirewallController._LOGGER.info('dpid=%s: Join as firewall.',
                                         dpid_str)
+
+        #run firewall rules at startup
+        for fr in firewall_rules:
+            header = {'content-type': 'application/json'}
+        
+            try:
+                FirewallController._LOGGER.info("Addding pre-defined rule to OF_SW: %s: %s"%(dpid_str, fr))
+                requests.post("http://localhost:8080/firewall/rules/"+dpid_str, headers=header, data=json.dumps(fr)) 
+
+            except:
+                FirewallController._LOGGER.error("Sth wrong during rule adding!")
+                
 
     @staticmethod
     def unregist_ofs(dp):
