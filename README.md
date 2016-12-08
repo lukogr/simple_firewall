@@ -1,5 +1,5 @@
 # simple_firewall
-simple_firewall in a network application dedicated for the SDN-enabled OpenFlow-based infrastructure. It runs with [Ryu] (https://osrg.github.io/ryu/) OpenFlow controller.
+simple_firewall is a network application dedicated for the SDN-enabled OpenFlow-based infrastructure. It runs with [Ryu] (https://osrg.github.io/ryu/) OpenFlow controller.
 
 simple_firewall application allows to set security rules to ICMP, UDP and TCP network traffic and monitor unwanted flows.
 It is based on the rest_firewall Ryu example application, but it implements also the forwarding engine to forward IP packets based on static routing table. Moreover it learns MAC adresses on ports to avoid ARP flooding each time.
@@ -15,7 +15,9 @@ It is based on the rest_firewall Ryu example application, but it implements also
 * Install Ryu OpenFlow controller. Yoy may follow the instructions from the [tutorial] (https://github.com/osrg/ryu/wiki/OpenFlow_Tutorial).
 
 ## How to run ##
+Get last code from GitHub
     ~/ryu/ryu/app$ git clone https://github.com/lukogr/simple_firewall
+Run simple_firewall as Ryu application    
     ~/ryu$ PYTHONPATH=. ./bin/ryu-manager --verbose ryu/app/simple_firewall/simple_firewall.py
    
 ## Routing configuration ##
