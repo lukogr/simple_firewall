@@ -4,6 +4,7 @@ simple_firewall is a network application dedicated for the SDN-enabled OpenFlow-
 simple_firewall application allows to 
   - set user-defined security rules for ICMP, UDP and TCP network traffic 
   - monitor unwanted flows
+
 It is based on the rest_firewall Ryu example application, but it implements also the forwarding engine to forward IP packets based on static routing table. Moreover it learns MAC adresses on ports to avoid ARP flooding each time.
 
 ## Before begin ##
@@ -27,7 +28,9 @@ On ubuntu:
 
 ### Configure static network routing ###
 Edit simple_firewall_conf.py and change topology_conf.
+
 All static routing entries for every OF switch should be configured before running the application. DPID (data path ID) may be retrieved from the command line of the switch.
+
 topology_conf has the following structure:
     
     topology_conf= {
@@ -188,5 +191,10 @@ simple_firewall exposes API (defined also in rest_firewall app) through http://{
 
    
 ## Notes ##
-Tested with OpenFlow 1.3 [Pica8-3822 and NoviFlow-2128 switches] / Ryu 4.8 and Python 2.7
-OS: ubuntu14.04
+Tested with:
+
+  - OpenFlow 1.3 
+  - OF Switches: Pica8-3822 and NoviFlow-2128 
+  - Ryu OpenFlow controller 4.8 
+  - Python 2.7
+  - OS: ubuntu14.04
