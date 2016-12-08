@@ -16,8 +16,10 @@ It is based on the rest_firewall Ryu example application, but it implements also
 
 ## How to run ##
 Get last code from GitHub
+
     ~/ryu/ryu/app$ git clone https://github.com/lukogr/simple_firewall
 Run simple_firewall as Ryu application    
+
     ~/ryu$ PYTHONPATH=. ./bin/ryu-manager --verbose ryu/app/simple_firewall/simple_firewall.py
    
 ## Routing configuration ##
